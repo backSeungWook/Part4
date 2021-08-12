@@ -1,0 +1,19 @@
+{
+  "name": "Part4",
+  "version": "1.0.0",
+  "description": "<a href=\"https://developer.mozilla.org/ko/\">자바스크립트 API</a>",
+  "main": "main.js",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.5"
+  },
+  "scripts": {
+    "dev" : "parcel index.html",
+    "build":"parcel build index.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
