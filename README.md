@@ -23,6 +23,17 @@
 
 ## Array
 1. `concat()` : array1.concat.array2 array1과 array2를 병합 후 새로운 배열을 반환(원본에 영향이 없음.)
+    1. lodash : .unionBy(Array1,Array2,'개체데이터') ex)
+        ```javascript
+        const userA =[
+          {userId:'1',userData:'Data1'}
+          ..
+        ]
+        const userA=[{...}]
+        _.unionBy(userA,userB,'userId')
+        ```
+     
+    
 1. `forEach()` : 베열에 값만큼 반복(리턴값 없음)
     ```javascript
     numbers = [1,2,3]
@@ -40,6 +51,11 @@
     => (3) ["1-0", "2-1", "3-2"]
 1. `filter()` : 조건에 맞는 데이터만 새로운 배열로 반환
 1. `find()` : 특정 조건에 맞는 데이터를 반환 하고 반복 종료 
+    1. lodash .find(): 배열안에 있는 개체데이터를 찾고 싶으면  
+        사용법(findIndex,remove 동일)
+        ```javascript
+        _.find(Array,{name:'Data1'}) 
+        ```
 1. `findIndex()` : 특정 조건에 맞는 인덱스 번호를 반환 하고 반복 종료 
 1. `includes()` : 베열에 매개변수 데이터가 들어있으면 True 없으면 false 반환
 1. `push()` (배열 원본이 수정될 수 있음)  
@@ -82,9 +98,11 @@ ex)
   const toObject = (a,b, ...c) => ({a,b,c})
   console.log(toObject(...test))
 ```
+---
+<br/>
 
-### 참조형데이터에서 대입은 메모리 주소값만 대입a=b. `원본 데이터를 변경시 원본 데이터 메모리 주소를 가지고있는 변수(b)에서도 변경 주소값을 참조 하고 있기 때문`
-### 똑같은 데이터를 새로운 메모리에 할당 시 복사하여 사용.
+#### 참조형데이터에서 대입은 메모리 주소값만 대입a=b. `원본 데이터를 변경시 원본 데이터 메모리 주소를 가지고있는 변수(b)에서도 변경 주소값을 참조 하고 있기 때문`
+#### 똑같은 데이터를 새로운 메모리에 할당 시 복사하여 사용.
 1. 얕은 복사  
     ```javascript
         const target = { a: 1, b: 2,c:['a'] };
@@ -95,9 +113,20 @@ ex)
         //문제점
         target.c.push('push data')
         console.log(target.c === copyTarget2 )//True 배열도 참조형 데이터이기 때문(C :배열)
-
-        
     ```
 1. 깊은 복사 (lodash lib 사용)  - 개체 데이터 안에 참조형데이터가 있을 시  
 사용법 : import _ form 'lodash'  
 _.cloneDeep(복사할 참조형데이터)
+
+## JSON & storage 
+<a href="https://developer.mozilla.org/ko/docs/Web/API/Window/localStorage">localstorage mdn 문서 참조</a>  
+<a href="https://github.com/backSeungWook/Part4/blob/master/main.js">예제 참조</a>
+
+
+읽기 전용 속성을 사용하면 Document 출처의 Storage 객체에 접근할 수 있습니다. 
+저장한 데이터는 브라우저 세션 간에 공유됩니다. localStorage는 sessionStorage와 비슷하지만,  
+localStorage의 데이터는 만료되지 않고 sessionStorage의 데이터는 페이지 세션이 끝날 때,  
+즉 페이지를 닫을 때 사라지는 점이 다릅니다.  
+("사생활 보호 모드" 중 생성한 localStorage 데이터는 마지막 "사생활 보호" 탭이 닫힐 때 지워집니다.)
+JSON & localstorage & session
+## OMDb
