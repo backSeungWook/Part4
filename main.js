@@ -105,9 +105,9 @@ function fetchMovies()
   axios
     .get('https://www.omdbapi.com/?apikey=7035c60c&s=frozen')
     .then(res => { 
-      
+      //forEach 모든 title 배열을 가지고 옴.
       res.data.Search.forEach(element => {
-        console.log(element)  
+        //console.log(element)  
         const h1El = document.querySelector('h1')
         const imgEl = document.querySelector('img')
         h1El.textContent = element.Title
@@ -118,3 +118,23 @@ function fetchMovies()
 }
 fetchMovies()
 
+
+//-- 정규식 표현식
+const strRegExp = `
+010-1234-5678
+thesecon@hanmail.net
+https://www.omdbapi.com/?apikey=7035c60c&s=frozen
+The quick brown fox jumps over the lazy dog.
+abbcccdddd
+http://localhost:1234
+`
+//g : 모든 글자
+//i : 대소문자 구별 X
+
+const regexpStr = /the/gi
+//console.log('RegExp : ',regexpStr.test(strRegExp))
+console.log('RegExp1 : ',strRegExp.replace(regexpStr,'AAA'))
+console.log('RegExp2 : ',strRegExp.match(/h..p/g)) //=> http . : 임의값 
+console.log('RegExp3 : ',strRegExp.match(/https?/g)) //? : 앞에 있는 한글자가 있을 수도 없을수도
+console.log('RegExp4 : ',strRegExp.match(/\b\w{2,3}\b/g)) //\w : 숫자 ,알파벳 포함 \b : 경계지정
+console.log('RegExp4 : ',strRegExp.match(/\b\w{2,3}\b/g))

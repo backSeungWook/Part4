@@ -123,10 +123,92 @@ _.cloneDeep(복사할 참조형데이터)
 <a href="https://github.com/backSeungWook/Part4/blob/master/main.js">예제 참조</a>
 
 
-읽기 전용 속성을 사용하면 Document 출처의 Storage 객체에 접근할 수 있습니다. 
+읽기 전용 속성을 사용하면 Document 출처의 Storage 객체에 접근할 수 있습니다.  
 저장한 데이터는 브라우저 세션 간에 공유됩니다. localStorage는 sessionStorage와 비슷하지만,  
 localStorage의 데이터는 만료되지 않고 sessionStorage의 데이터는 페이지 세션이 끝날 때,  
 즉 페이지를 닫을 때 사라지는 점이 다릅니다.  
 ("사생활 보호 모드" 중 생성한 localStorage 데이터는 마지막 "사생활 보호" 탭이 닫힐 때 지워집니다.)
-JSON & localstorage & session
-## OMDb
+
+
+</br>
+
+---
+
+## OMDb<a href="https://github.com/backSeungWook/Part4/blob/master/main.js">(참조)</a>
+---
+</br>
+
+## 정규표현식(RegExp)
+### 정규식 테스트 사이트  
+- <a href="https://regex101.com/">https://regex101.com/</a>  
+- <a href="https://regexr.com/">https://regexr.com/</a>  
+- <a href="https://regexper.com/">https://regexper.com/</a>  
+
+### 역활
+- 문자 검색(search)
+- 문자 대체(replace)
+- 문자 추출(extract)
+
+### 정규식 생성 방법
+
+```js
+//생성자 
+new RegExp('표현','옵션')
+const regexp1 = new RegExp("^abc")
+const regexp2 = new RegExp("^abc",'gi')
+
+//리터널 방식
+//정규표현식은 `/` 로 감싸진 패턴
+/표현/옵션
+const regexp3 = /^abc/gi
+```
+
+### 정규표현식을 다루는 다양한 메소드
+메소드 | 문법 | 설 명
+-----|-----|------
+`test`|`정규식.test(문자열)`|일치 여부 반환(Boolean)
+`match`|`문자열.match(정규식)`|일치하는 문자열의 배열 반환(Array)
+`replace`|`문자열.replace(정규식,대체문자)`|일치하는 문자열을 대체하고 대체된 문자열 반환(String)
+
+#### 예제 문자
+```js
+const strRegExp = `
+010-1234-5678
+thesecon@hanmail.net
+https://www.omdbapi.com/?apikey=7035c60c&s=frozen
+The quick brown fox jumps over the lazy dog
+abbcccdddd
+`
+```
+
+### 플래그(옵션)
+
+플래그 | 설 명
+--|--
+`g` | 모든 문자 일치(global)
+`i` | 영어 대소문자를 구분 하지 않고 일치(ignore case)
+`m` | 여러 줄 일치(multi line)
+
+### 패턴(표현)
+
+패턴 | 설 명
+--|--
+^`ab` | 줄 시작에 있는 `ab`와 일치
+`ab`$ | 줄 끝에 있는 `ab`와 일치
+. | 임의의 한 문자와 일치
+`a`&verbar;`b` | `a` 또는 `b`와 일치 
+a`b`? | `b`가 없거나 `b`와 일치
+{`3`} | `3`개 연속 일치
+{`3`,} | `3`개 이상 연속 일치
+{`3`,`5`} | `3`개 이상 `5`개 이하(3~5) 연속 일치
+[`abc`] | a 또는 b  또는 c
+[`a-z`] | a ~ z 사이의 문자 구간에 일치(소문자)
+[`A-Z`] | A ~ Z 사이의 문자 구간 일치(대문자)
+[`0-9`] | 0 ~ 9 사이의 문자 구간 일치(정수)
+[`가-힣`] | 가 ~ 힣 사이의 문자 구간 일치(한글)
+`\w` | 63개 문자(Word, 대소영문52 + 숫자10 + _)에 일치
+`\b` | 63개 문자에 일치하지 않는 문자 경계(특수문자)
+`\d` | 숫자에 일치
+`\s` | 공백(Space,Tab 등) 에 일치
+`(?=)` | 앞쪽 일치
+`(?<=)` | 뒤쪽 일치 
